@@ -16,6 +16,8 @@ public class Appointment {
     private LocalDate patientPreferredDay;
     private AppointmentStatus appointmentStatus;
 
+    private Long doctor;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -62,5 +64,13 @@ public class Appointment {
 
     public void setAppointmentStatus(AppointmentStatus appointmentStatus) {
         this.appointmentStatus = appointmentStatus;
+    }
+
+    public Long getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Long doctor) {
+        this.doctor = doctor;
     }
 }

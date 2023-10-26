@@ -18,7 +18,7 @@ public class PatientService {
     public void validatePatient(Long id, String firstName, String lastName) {
         String email = firstName + "." + lastName + "@google.com";
 
-        boolean isClient = Math.random() > 0.7;
+        boolean isClient = true;
 
         PatientValidatedEvent patientValidatedEvent = new PatientValidatedEvent();
         patientValidatedEvent

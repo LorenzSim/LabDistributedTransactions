@@ -16,6 +16,6 @@ public class RabbitMqMessageSender implements MessageSender {
 
     @Override
     public void sendPatientValidatedEvent(PatientValidatedEvent event) {
-        template.convertAndSend("x.appointment-validate-patient-reply", "", event);
+        template.convertAndSend("x.patient-validated", "", event);
     }
 }
