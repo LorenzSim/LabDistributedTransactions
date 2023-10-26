@@ -75,6 +75,8 @@ components:
         appointmentRequestNumber:
           type: string
           example: "23-11-5678"
+
+    # rejection or acceptation by patient
     ApiAppointmentConfirmation:
       type: object
       properties:
@@ -93,6 +95,7 @@ components:
         message:
           type: string
           description: 'Brief explanation about the error, for more information consult the Doctor Service team'
+
     AppointmentCreatedEvent:
       type: object
       properties:
