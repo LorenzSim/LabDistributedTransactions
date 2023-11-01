@@ -1,7 +1,7 @@
 package be.ucll.da.doctorservice.messaging;
 
-import be.ucll.da.doctorservice.api.messaging.model.DoctorsOnPayrollEvent;
+import be.ucll.da.doctorservice.api.messaging.model.DoctorsEmployedEvent;
 
 public interface MessageSender {
-    void sendDoctorsOnPayrollEvent(DoctorsOnPayrollEvent event);
+    void sendDoctorsEmployedEvent(DoctorsEmployedEvent event);
 }

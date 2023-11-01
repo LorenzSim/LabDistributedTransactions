@@ -1,5 +1,9 @@
 package be.ucll.da.roomservice.domain;
 
+import be.ucll.da.roomservice.api.messaging.model.ReserveRoomCommand;
+import be.ucll.da.roomservice.api.messaging.model.RoomReservedEvent;
+import be.ucll.da.roomservice.messaging.RabbitMQMessageSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -8,6 +12,13 @@ import java.util.Map;
 
 @Service
 public class RoomService {
+
+    private final RabbitMQMessageSender messageSender;
+
+    @Autowired
+    public RoomService(RabbitMQMessageSender messageSender) {
+        this.messageSender = messageSender;
+    }
 
     // Returns roomID is reservation is successful, -1 otherwise
     public Integer reserveRoom(LocalDate day) {
@@ -46,5 +57,16 @@ public class RoomService {
         newRoomMap.put(3, false);
 
         return newRoomMap;
+    }
+
+    public void handleReserveRoomCommand(ReserveRoomCommand command) {
+        Integer roomId = reserveRoom(command.getDay());
+
+        RoomReservedEvent event = new RoomReservedEvent()
+                .appointmentId(command.getAppointmentId())
+                .day(command.getDay())
+                .id(roomId);
+
+        messageSender.sendRoomReservedEvent(event);
     }
 }

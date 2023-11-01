@@ -15,18 +15,22 @@ components:
     CheckDoctorsEmployedCommand:
       type: object
       properties:
+        appointmentId:
+          type: integer
         fieldOfExpertise:
           type: string
-    DoctorsOnPayrollEvent:
+    DoctorsEmployedEvent:
       type: object
       properties:
+        appointmentId:
+          type: integer
         fieldOfExpertise:
           type: string
         doctors:
           type: array
           items:
-            $ref: '#/components/schemas/DoctorOnPayroll'
-    DoctorOnPayroll:
+            $ref: '#/components/schemas/DoctorEmployed'
+    DoctorEmployed:
       type: object
       properties:
         id:
